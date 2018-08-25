@@ -1,18 +1,57 @@
-#' Title
+#' Retrive Tides Data From NOAA CO-OPS API
 #'
-#' @param station_id
-#' @param start_date
-#' @param end_date
-#' @param data_product
-#' @param units
-#' @param time_zone
-#' @param datum
-#' @param interval
+#' @param station_id is a character string that provides the a 7 character
+#' station id.
 #'
-#' @return
+#' @param start_date is a character string that specifies the start date for the
+#' retrival period.  Dates can be specified in the following formats:
+#' \emph{yyyyMMdd}, \emph{yyyyMMdd HH:mm}, \emph{MM/dd/yyyy}, or
+#' \emph{MM/dd/yyyy HH:mm}.
+#'
+#' @param end_date is a character string that specifies the end date for the
+#' retrival period.  Dates can be specified in the following formats:
+#' \emph{yyyyMMdd}, \emph{yyyyMMdd HH:mm}, \emph{MM/dd/yyyy}, or
+#' \emph{MM/dd/yyyy HH:mm}.
+#'
+#' @param data_product specifies the data product to be returned.  See
+#' \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
+#' the avaliable data products.
+#'
+#' @param units a character string specifiying if the data should be returned
+#' using metric or english units.  Defaults to \code{'english'}.
+#'
+#' @param time_zone a character string specifying what time zone information the
+#' data should be returned with.  Options include Greenwich Mean Time
+#' \code{'gmt'}, Local Standard Time \code{'lst'}, and Local Standard/Local
+#' Daylight Time \code{'lst_ldt'}.  Local times refer to the local time of the
+#' specified station.  The default is \code{'lst_ldt'}
+#'
+#' @param datum a character string indicating the datum that should be returned.
+#' See \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation}
+#' for the avaliable datums.
+#'
+#' @param interval a character string that specifies the interval for which
+#' Meteorological data is returned. The api defaults to every six minutes and
+#' does not need to be specified.  Other option include hourly \code{'h'} and
+#' \code{'hilo'}.  The retrival time period specified by \strong{start_date} and
+#' \strong{end_date} to create restrictions on the intervals that can be
+#' returned. See
+#' \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
+#' details
+#'
+#' @return a data frame.
 #' @export
 #'
 #' @examples
+#' # Do Not Run
+#' a <- query_tides_data('9414290',
+#'                       '20170101',
+#'                       '20170201',
+#'                       'predictions',
+#'                        interval = 'hilo',
+#'                        datum = 'MLLW')
+#' head(a)
+
 query_tides_data <- function(station_id,
                              start_date,
                              end_date,
