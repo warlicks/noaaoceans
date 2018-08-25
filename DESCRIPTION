@@ -13,4 +13,6 @@ Suggests: testthat,
     covr
 RoxygenNote: 6.0.1
 Imports: httr,
-    jsonlite
+    jsonlite,
+    rvest,
+    xml2

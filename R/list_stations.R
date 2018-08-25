@@ -1,0 +1,57 @@
+#' Title
+#'
+#' @return
+#' @export
+#'
+#' @examples
+
+list_stations <- function(){
+    # Call the URL with station data.
+    station_url <- 'https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp'
+    station_xml <- xml2::read_html(station_url)
+
+    # Get Station Names
+    station_nodes <- rvest::html_nodes(station_xml, 'station')
+    station_names <- rvest::html_attr(station_nodes, 'name')
+    station_id <- rvest::html_attr(station_nodes, 'id')
+
+    # Parse out the stations location.  We have state, lat and long data to help
+    # locate a given station.
+    station_lat_nodes <- rvest::html_nodes(station_xml, 'lat')
+    station_lat <- rvest::html_text(station_lat_nodes)
+
+    station_long_nodes <- rvest::html_nodes(station_xml, 'long')
+    station_long <- rvest::html_text(station_long_nodes)
+
+    station_state_nodes <- rvest::html_nodes(station_xml, 'state')
+    station_state <- rvest::html_text(station_state_nodes)
+
+    # Parse the data a station was founded.
+    date_established_nodes <- rvest::html_nodes(station_xml, 'date_established')
+    date_established <- rvest::html_text(date_established_nodes)
+
+
+    # Create a data frame with the station info.
+    station_df <- data.frame(station_id,
+                             station_names,
+                             station_state,
+                             station_lat,
+                             station_long,
+                             date_established)
+
+    # We want to add columns for all the possible sensor names. We start by
+    # finding all the parameter nodes.
+    parameter_nodes <- rvest::html_nodes(station_xml, 'parameter')
+
+    # We then extract all the sensor names and create list of unique names
+    sensor_names <- rvest::html_attr(parameter_nodes, 'name')
+    sensor_names <- unique(sensor_names)
+    sensor_names <- sensor_names[sensor_names != ""]
+
+    # We now add the unique sensor names as columns to our data frame.
+    station_df[, sensor_names] <- NA
+
+    status_station_df <- parse_sensor_status(station_nodes, station_df)
+
+    return(status_station_df)
+}
