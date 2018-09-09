@@ -5,6 +5,7 @@
 #'
 #' @return
 #' @noRd
+#' @keywords internal
 #'
 #' @examples
 parse_sensor_status <- function(station_nodes, data_frame){
@@ -21,9 +22,6 @@ parse_sensor_status <- function(station_nodes, data_frame){
         for(j in 1:length(station_sensors)){
             sensor_name <- station_sensors[[j]]['name']
             sensor_status <- station_sensors[[j]]['status']
-
-            print(sensor_name)
-            print(sensor_status)
 
             # Skip sensors without a name
             if(sensor_name == ""){
