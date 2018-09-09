@@ -20,3 +20,7 @@ test_that('Test that the function can properly parse an error message', {
                                   'water_level')
                 )
 })
+
+test_that('Test that station list returns a data frame', {
+    expect_is(list_stations(), 'data.frame')
+})
