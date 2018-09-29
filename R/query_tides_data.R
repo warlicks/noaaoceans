@@ -89,12 +89,16 @@ query_tides_data <- function(station_id,
                                   flatten = TRUE)
 
     # Check if the call returned an error message
-    if(names(df_list) == 'error'){
+    if(any(names(df_list) == 'error')){
         stop(df_list$error$message)
     }
 
     # The data frame is stored as an element in a list. Here we extract it.
-    df <- df_list[[1]]
+    if(data_product == 'predictions'){
+        df <- df_list$predictions
+    } else{
+        df <- df_list$data
+    }
 
     # Add the station ID for record keeping.
     df$station <- rep(station_id, times = nrow(df))
