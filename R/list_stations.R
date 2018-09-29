@@ -1,9 +1,26 @@
-#' Title
+#' Find All NOAA Stations
 #'
-#' @return
+#' This funciton produces a data frame with all NOAA stations.  The list of
+#' stations is retrived from
+#' \href{https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp'}{NOAA's}
+#' website when the function is called.
+#'
+#' In the returned data frame there is one row for each station. The name,
+#' location and date that the station was established are included as columns.
+#' In addition, there are columns that provide the status of various sensors at
+#' the station is included.  The column names indicate the type of sensor
+#'
+#' In the status colums a value of \emph{1} indicates that sensor is working
+#' A \emph{0} indicates that the sensor is not working.  If a particular
+#' station does not have the capablility indicated by the column name, the value
+#' provided is \code{NA}
+#'
+#' @return A data frame.
 #' @export
 #'
 #' @examples
+#' # Do Not Run
+#' station_df <- list_stations()
 
 list_stations <- function(){
     # Call the URL with station data.
