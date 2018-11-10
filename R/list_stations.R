@@ -25,7 +25,8 @@
 list_stations <- function(){
     # Call the URL with station data.
     station_url <- 'https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp'
-    station_xml <- xml2::read_html(station_url)
+    response <- httr::GET(station_url)
+    station_xml <- xml2::read_html(response)
 
     # Get Station Names
     station_nodes <- rvest::html_nodes(station_xml, 'station')
