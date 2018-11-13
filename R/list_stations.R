@@ -64,6 +64,7 @@ list_stations <- function(){
     # We then extract all the sensor names and create list of unique names
     sensor_names <- rvest::html_attr(parameter_nodes, 'name')
     sensor_names <- unique(sensor_names)
+    sensor_names <- tolower(sensor_names)
     sensor_names <- sensor_names[sensor_names != ""]
 
     # We now add the unique sensor names as columns to our data frame.
