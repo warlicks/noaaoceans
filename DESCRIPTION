@@ -11,12 +11,14 @@ Description: The NOAATides package provides a small set of tools for collecting
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests: testthat,
+Suggests: 
+    testthat,
     covr,
     knitr,
     rmarkdown,
     dplyr,
-    httptest
+    httptest,
+    ggplot2
 RoxygenNote: 6.0.1
 Imports: httr,
     jsonlite,
