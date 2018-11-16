@@ -1,6 +1,6 @@
 ---
 title: "Getting Started With NOAATides"
-author: "Vignette Author"
+author: "Sean Warlick"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -10,16 +10,17 @@ vignette: >
 ---
 
 ```{r, include=FALSE, warning=FALSE, message=FALSE}
-library(httptest)
+#library(httptest)
 
-start_vignette("getting_started")
+#start_vignette("getting_started")
 ```
-The *NOAATides* package is a package designed to facliate access to various National Oceanic and Atmospheric Administration (NOAA) data sources.  The current version focus on acess data from the [CO-OPS API](https://tidesandcurrents.noaa.gov/api/).  Package also facilitates the collection of basic metadata regarding for each of the stations that collect the data avaliable in the API.  
+The **NOAATides** package is a package designed to facliate access to various National Oceanic and Atmospheric Administration (NOAA) data sources.  The current version focus on acess data from the [CO-OPS API](https://tidesandcurrents.noaa.gov/api/).  Package also facilitates the collection of basic metadata regarding for each of the stations that collect the data avaliable in the API.  
 
-There are two functions incldued in the package and they are often used together to provide the information of interest. The first function in the package is `list_stations()`, which allows the users to find metadata about each NOAA data colleciton station.  The other funciton in the package is `query_tides_data()`.  This funciton allows the user to specify a location, data type and time period of interest for their dataset.  For details on the the types of data avaliable in the [CO-OPS API Documentation](https://tidesandcurrents.noaa.gov/api/))
+There are two functions incldued in the package and they are often used together to provide the information of interest. The first function in the package is `list_stations()`, which allows the users to find metadata about each NOAA data colleciton station. Each time the function is called it gather's the data from NOAA's website, so the staion metadata and the status of it's sensors is always uptodate. The other funciton in the package is `query_tides_data()`.  This funciton allows the user to specify a location, data type and time period of interest for their dataset.  For details on the the types of data avaliable in the [CO-OPS API Documentation](https://tidesandcurrents.noaa.gov/api/))
 
-In developing the *NOAATides* package we have tried to make the package as user friendly as possible. Both functions return their resutls as data frame. I feel that most R users are most familar with this data structure and allows the user to imediately use tools in the *tideyverse*.  In the remaineder of this article I will take the reader through an using the package to collect and visualize XX data for locations in the state of Washington.  
+In developing the **NOAATides** package we have tried to make the package as user friendly as possible. Both functions return their resutls as data frame. I feel that most R users are most familar with this data structure and allows the user to imediately use tools in the **tideyverse**.  In the remaineder of this article I will take the reader through an using the package to collect and visualize water temperature data for locations in the state of Washington.  
 
+In the example below we start by loading the **NOAATides** package and our supporting packages **dplyr** and **ggplot2**. We use the `list_stations()` to return a data frame with metadata for each of NOAA's measurement stations. 
 ```{r find_station, message=FALSE, warning=FALSE}
 library(NOAATides)
 library(dplyr)
@@ -28,33 +29,53 @@ library(ggplot2)
 # Get a list of all the stations.
 station_df <- list_stations()
 
-# Filter to stations in Washington with Water Temp Sensor
-station_df %>% 
-    filter(station_state == 'WA' & `water_temp` == '1') %>% 
-    head()
+# Inspect our data frame
+station_df %>% dim()
+names(station_df)
+station_df %>% head()
 ```
+Our returned data frame has a total of `r length(names(station_df))`.  The first several columns provide identifying the station and it's geographic location.  The remaining nine colums indicate the status of the of the sensors at each station.  In these columns a *1* indicates the sensor is working, while a *0* indicates the sensor is not working. A `NA` indicates that particular sensor does not exist at a given station.  
+  
+After taking a look at the data returned by `list_stations()`, it's time to identifiy our stations of interest.  In this case we want to find all stations in the state of Washington (WA) that collect water temperature.  We'll acomplish this by simply filtering out data frame with `dplyr::filter()`.   
+```{r wa_stations}
+# Filter to stations in Washington with Water Temp Sensor
+wa_station <- station_df %>% 
+    filter(station_state == 'WA' & `water_temp` == '1')
+``` 
+The results of filtering returns a data frame with records for `r nrow(wa_station)` locations that meet our criteria.  We'll use the data from the *station_id* column when querying API with `query_tides_data()`. Via the API we'll capture hourly water temperatures for each station from January 1, 2018 through July 31, 2018.  We'll pass of each these conditions as an arugment to the fuction.  For a complete list of arguments see the help documentation `help(query_tides-data)`. The details and options avaliable to each arugment see the API's documentation.  
 
 ```{r query_api}
-query_df <- query_tides_data('9440422',
-                             '20180101',
-                             '20180601',
-                             data_product = 'water_temperature',
-                             interval = 'h')
+water_temp <- data.frame()
+for (i in wa_station$station_id) {
+    query_df <- query_tides_data(station_id = i,
+                                 start_date = '20180101',
+                                 end_date = '20180630',
+                                 data_product = 'water_temperature',
+                                 interval = 'h')
+    
+    water_temp <- water_temp %>% bind_rows(., query_df)
+}
 ```
 ```{r inspect_data}
-query_df %>% head()
+dim(water_temp)
+names(water_temp)
+water_temp %>% head()
 ```
-```{r plot_data}
-query_df <- query_df %>% mutate(v = as.numeric(v),
-                                t = as.POSIXct(t))
+Now that we have our data well start by ploting the average hourly water temperature in washington. Before we can do that we need to make a few data type corrections. Both our time stamp value and 
 
-query_df %>% 
-    ggplot(aes(x = t, y = v)) + 
+```{r plot_data}
+water_temp <- water_temp %>% mutate(v = as.numeric(v), 
+                                    t = as.POSIXct(t))
+
+water_temp %>% 
+    group_by(t) %>% 
+    summarise(avg_temp = mean(v, na.rm = TRUE)) %>% 
+    ggplot(aes(x = t, y = avg_temp)) +
     geom_path() +
-    labs(x = "Date", 
+    labs(x = "Date",
          y = 'Water Temperature',
          title = 'Hourly Water Temp Between January and May 2018')
 ```
 ```{r, include=FALSE}
-end_vignette()
+#end_vignette()
 ```
