@@ -52,7 +52,7 @@
 #'                        datum = 'MLLW')
 #' head(a)
 
-query_tides_data <- function(station_id,
+query_coops_data <- function(station_id,
                              start_date,
                              end_date,
                              data_product,

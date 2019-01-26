@@ -22,7 +22,7 @@
 #' # Do Not Run
 #' station_df <- list_stations()
 
-list_stations <- function(){
+list_coops_stations <- function(){
     # Call the URL with station data.
     station_url <- 'https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp'
     response <- httr::GET(station_url)
