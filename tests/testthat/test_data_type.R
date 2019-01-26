@@ -2,7 +2,7 @@
 context('Test Returned Data Types')
 
 test_that('Expect that predictions data prodcut query returns a data frame', {
-    expect_is(query_tides_data('9414290',
+    expect_is(list_coops_stations('9414290',
                                '20170101',
                                '20170201',
                                data_product = 'predictions',
@@ -13,7 +13,7 @@ test_that('Expect that predictions data prodcut query returns a data frame', {
 })
 
 test_that("Test that the function returns a data frame for non-prediction data products", {
-    expect_is(query_tides_data('9444900',
+    expect_is(list_coops_stations('9444900',
                                '20180601 15:00',
                                '20180601 17:00',
                                data_product = 'water_temperature',
@@ -22,7 +22,7 @@ test_that("Test that the function returns a data frame for non-prediction data p
 })
 
 test_that('Test that the function can properly parse an error message', {
-    expect_error(query_tides_data('9414290',
+    expect_error(list_coops_stations('9414290',
                                   '20170101',
                                   '20170101',
                                   'water_level')
@@ -30,5 +30,5 @@ test_that('Test that the function can properly parse an error message', {
 })
 
 test_that('Test that station list returns a data frame', {
-    expect_is(list_stations(), 'data.frame')
+    expect_is(list_coops_stations(), 'data.frame')
 })
