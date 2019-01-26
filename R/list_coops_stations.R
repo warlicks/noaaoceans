@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' # Do Not Run
-#' station_df <- list_stations()
+#' station_df <- list_coops_stations()
 
 list_coops_stations <- function(){
     # Call the URL with station data.

@@ -44,7 +44,7 @@
 #'
 #' @examples
 #' # Do Not Run
-#' a <- query_tides_data('9414290',
+#' a <- query_coops_data('9414290',
 #'                       '20170101',
 #'                       '20170201',
 #'                       'predictions',
