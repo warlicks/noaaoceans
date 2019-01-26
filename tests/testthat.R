@@ -1,4 +1,4 @@
 library(testthat)
-library(NOAATides)
+library(noaaoceans)
 
-test_check("NOAATides")
+test_check("noaaoceans")

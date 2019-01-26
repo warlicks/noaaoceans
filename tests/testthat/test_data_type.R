@@ -1,4 +1,3 @@
-library(NOAATides)
 
 context('Test Returned Data Types')
 
