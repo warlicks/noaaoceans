@@ -14,15 +14,15 @@ vignette: >
 
 #start_vignette("getting_started")
 ```
-The **NOAATides** package is a package designed to facliate access to various National Oceanic and Atmospheric Administration (NOAA) data sources.  The current version focus on acess data from the [CO-OPS API](https://tidesandcurrents.noaa.gov/api/).  Package also facilitates the collection of basic metadata regarding for each of the stations that collect the data avaliable in the API.  
+The **noaaoceans** package is a package designed to facliate access to various National Oceanic and Atmospheric Administration (NOAA) data sources.  The current version focuses on access data from the [CO-OPS API](https://tidesandcurrents.noaa.gov/api/).  Package also facilitates the collection of basic metadata regarding for each of the stations that collect the data avaliable in the API.  
 
 There are two functions incldued in the package and they are often used together to provide the information of interest. The first function in the package is `list_stations()`, which allows the users to find metadata about each NOAA data colleciton station. Each time the function is called it gather's the data from NOAA's website, so the staion metadata and the status of it's sensors is always uptodate. The other funciton in the package is `query_tides_data()`.  This funciton allows the user to specify a location, data type and time period of interest for their dataset.  For details on the the types of data avaliable in the [CO-OPS API Documentation](https://tidesandcurrents.noaa.gov/api/))
 
-In developing the **NOAATides** package we have tried to make the package as user friendly as possible. Both functions return their resutls as data frame. I feel that most R users are most familar with this data structure and allows the user to imediately use tools in the **tideyverse**.  In the remaineder of this article I will take the reader through an using the package to collect and visualize water temperature data for locations in the state of Washington.  
+In developing the **noaaoceans** package we have tried to make the package as user friendly as possible. Both functions return their resutls as data frame. I feel that most R users are most familar with this data structure and allows the user to imediately use tools in the **tideyverse**.  In the remaineder of this article I will take the reader through an using the package to collect and visualize water temperature data for locations in the state of Washington.  
 
-In the example below we start by loading the **NOAATides** package and our supporting packages **dplyr** and **ggplot2**. We use the `list_stations()` to return a data frame with metadata for each of NOAA's measurement stations. 
+In the example below we start by loading the **noaaoceans** package and our supporting packages **dplyr** and **ggplot2**. We use the `list_stations()` to return a data frame with metadata for each of NOAA's measurement stations. 
 ```{r find_station, message=FALSE, warning=FALSE}
-library(NOAATides)
+library(noaaoceans)
 library(dplyr)
 library(ggplot2)
 
