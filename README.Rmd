@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 [![codecov](https://codecov.io/gh/warlicks/NOAATides/branch/master/graph/badge.svg)](https://codecov.io/gh/warlicks/NOAATides)
 
   
-# NOAATides
+# noaaoceans
 
-The goal of NOAATides is to ...
+The goal of noaaoceans is to ...
 
 ## Example
 
