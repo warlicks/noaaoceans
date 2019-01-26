@@ -1,4 +1,3 @@
-library(NOAATides)
 
 context('Check The parse_station status fuction')
 # Prepare data for the test ----
@@ -42,7 +41,7 @@ station_nodes <- rvest::html_nodes(html, 'station')
 
 # Use our function to parse the html and append the results to the
 # empty data frame.
-output_df <- NOAATides:::parse_sensor_status(station_nodes, empty_df)
+output_df <- noaaoceans:::parse_sensor_status(station_nodes, empty_df)
 
 # Run our tests.
 test_that("The fuction returns a data frame",
