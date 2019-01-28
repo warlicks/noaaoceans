@@ -14,7 +14,6 @@ vignette: >
 
 #start_vignette("getting_started")
 ```
-## Introduction 
 The **noaaoceans** package is a designed to facilitate access to various National Oceanic and Atmospheric Administration (NOAA) data sources.  The current version focuses on accessing data from the [CO-OPS API](https://tidesandcurrents.noaa.gov/api/).  The package also facilitates the collection of basic metadata regarding for each of the stations that collect the data available in the API.  
 
 There are two functions included in the package and they are often used together to provide the information of interest. The first function in the package is `list_coops_stations()`, which allows the users to find metadata about each NOAA data collection station. Each time the function is called it gather's the data from NOAA's website, so the station metadata and the status of it's sensors is always up to-date. The other function in the package is `query_coops_data()`.  This function allows the user to specify a location, data type and time period of interest for their data set.  For details on the the types of data available in the [CO-OPS API Documentation](https://tidesandcurrents.noaa.gov/api/).
