@@ -20,12 +20,13 @@
 #'
 #' @examples
 #' # Do Not Run
-#' station_df <- list_stations()
+#' station_df <- list_coops_stations()
 
-list_stations <- function(){
+list_coops_stations <- function(){
     # Call the URL with station data.
     station_url <- 'https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp'
-    station_xml <- xml2::read_html(station_url)
+    response <- httr::GET(station_url)
+    station_xml <- xml2::read_html(response)
 
     # Get Station Names
     station_nodes <- rvest::html_nodes(station_xml, 'station')
@@ -54,7 +55,8 @@ list_stations <- function(){
                              station_state,
                              station_lat,
                              station_long,
-                             date_established)
+                             date_established,
+                             stringsAsFactors = FALSE)
 
     # We want to add columns for all the possible sensor names. We start by
     # finding all the parameter nodes.
@@ -69,6 +71,13 @@ list_stations <- function(){
     station_df[, sensor_names] <- NA
 
     status_station_df <- parse_sensor_status(station_nodes, station_df)
+
+    #Update column names to make the names consistent
+    col_names <- names(status_station_df)
+    col_names <- tolower(col_names)
+    col_names <- sub(' ', '_', col_names)
+
+    names(status_station_df) <- col_names
 
     return(status_station_df)
 }

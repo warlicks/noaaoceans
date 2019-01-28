@@ -10,21 +10,71 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "tools/README-"
 )
 ```
 [![Build Status](https://travis-ci.org/warlicks/NOAATides.svg?branch=master)](https://travis-ci.org/warlicks/NOAATides)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/warlicks/NOAATides?branch=master&svg=true)](https://ci.appveyor.com/project/warlicks/NOAATides)
 [![codecov](https://codecov.io/gh/warlicks/NOAATides/branch/master/graph/badge.svg)](https://codecov.io/gh/warlicks/NOAATides)
 
   
-# NOAATides
+# noaaoceans
 
-The goal of NOAATides is to ...
+The **noaaoceans** package is designed to facilitate access to various National Oceanic and Atmospheric Administration (NOAA) data sources.  The current version focuses on accessing data from the [CO-OPS API](https://tidesandcurrents.noaa.gov/api/).  The package also facilitates the collection of basic metadata for each of the stations that collect the data available in the API.  
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+### Find all the CO-OPS stations in Washington. 
+```{r find_station, message=FALSE, warning=FALSE}
+library(noaaoceans)
+library(dplyr)
+library(ggplot2)
+library(maps)
+library(mapdata)
 
-```{r example}
-## basic example code
+# Get a list of all the stations.
+station_df <- list_coops_stations()
+
+# Filter to stations in Washington with Water Temp Sensor
+wa_station <- station_df %>% 
+    filter(station_state == 'WA' & water_temp == '1')
+wa_station %>% dplyr::as_tibble(.) %>% head()
+```
+
+### Query API For Water Temperature Data
+```{r query_api}
+# Create an empty storage data frame. 
+water_temp <- data.frame()
+
+# Loop through the station and call the API for each station
+for (i in wa_station$station_id) {
+    query_df <- query_coops_data(station_id = i,
+                                 start_date = '20181201',
+                                 end_date = '20181231',
+                                 data_product = 'water_temperature',
+                                 interval = 'h') # hourly readings
+    
+    # Add current station results to the storage data frame 
+    water_temp <- water_temp %>% bind_rows(., query_df)
+}
+
+water_temp %>% as_tibble(.) %>% head()
+```
+
+### Plot the Average Water Temp
+```{r plot_data, fig.height=5, fig.width=7}
+# Correct data types. 
+water_temp <- water_temp %>% 
+    mutate(v = as.numeric(v), t = as.POSIXct(t))
+
+water_temp %>% 
+    group_by(t) %>% 
+    # Compute the hourly average. 
+    summarise(avg_temp = mean(v, na.rm = TRUE)) %>% 
+    # Plot the hourly average. 
+    ggplot(aes(x = t, y = avg_temp)) +
+    geom_path() +
+    labs(x = "Date",
+         y = 'Average Water Temperature',
+         title = 'Average Hourly Water Temperature In Washington During December 2018')
 ```

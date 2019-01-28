@@ -44,7 +44,7 @@
 #'
 #' @examples
 #' # Do Not Run
-#' a <- query_tides_data('9414290',
+#' a <- query_coops_data('9414290',
 #'                       '20170101',
 #'                       '20170201',
 #'                       'predictions',
@@ -52,7 +52,7 @@
 #'                        datum = 'MLLW')
 #' head(a)
 
-query_tides_data <- function(station_id,
+query_coops_data <- function(station_id,
                              start_date,
                              end_date,
                              data_product,
