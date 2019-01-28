@@ -55,7 +55,8 @@ list_coops_stations <- function(){
                              station_state,
                              station_lat,
                              station_long,
-                             date_established)
+                             date_established,
+                             stringsAsFactors = FALSE)
 
     # We want to add columns for all the possible sensor names. We start by
     # finding all the parameter nodes.
