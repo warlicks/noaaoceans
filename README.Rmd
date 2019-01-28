@@ -10,7 +10,7 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "tools/README-"
 )
 ```
 [![Build Status](https://travis-ci.org/warlicks/NOAATides.svg?branch=master)](https://travis-ci.org/warlicks/NOAATides)

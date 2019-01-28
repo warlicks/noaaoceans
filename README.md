@@ -88,4 +88,4 @@ water_temp %>%
          title = 'Average Hourly Water Temperature In Washington During December 2018')
 ```
 
-![](README-plot_data-1.png)
+![](tools/README-plot_data-1.png)
