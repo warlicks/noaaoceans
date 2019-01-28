@@ -12,7 +12,7 @@ A data frame.
 \description{
 This funciton produces a data frame with all NOAA stations.  The list of
 stations is retrived from
-\href{https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp'}{NOAA's}
+\href{https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp}{NOAA's}
 website when the function is called.
 }
 \details{
