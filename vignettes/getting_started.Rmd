@@ -10,9 +10,9 @@ vignette: >
 ---
 
 ```{r, include=FALSE, warning=FALSE, message=FALSE}
-#library(httptest)
+library(httptest)
 
-#start_vignette("getting_started")
+start_vignette("getting_started")
 ```
 The **noaaoceans** package is designed to facilitate access to various National Oceanic and Atmospheric Administration (NOAA) data sources.  The current version focuses on accessing data from the [CO-OPS API](https://tidesandcurrents.noaa.gov/api/).  The package also facilitates the collection of basic metadata for each of the stations that collect the data available in the API.  
 
@@ -160,5 +160,5 @@ A quick inspection of the returned data frame shows that the temperature value (
 
 If you encounter a situation where it appears that data should be available for a given query, you might want to contact NOAA's User Services(co-ops.userservices@noaa.gov). They have been very responsive, when issues have been raised and worked to get the missing data accessible if the data is in their database. 
 ```{r, include=FALSE}
-#end_vignette()
+end_vignette()
 ```
