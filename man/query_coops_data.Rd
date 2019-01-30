@@ -2,7 +2,7 @@
 % Please edit documentation in R/query_coops_data.R
 \name{query_coops_data}
 \alias{query_coops_data}
-\title{Retrive Tides Data From NOAA CO-OPS API}
+\title{Retrieve Tides Data From NOAA CO-OPS API}
 \usage{
 query_coops_data(station_id, start_date, end_date, data_product,
   units = "english", time_zone = "lst_ldt", datum = NULL,
@@ -13,21 +13,21 @@ query_coops_data(station_id, start_date, end_date, data_product,
 station id.}
 
 \item{start_date}{is a character string that specifies the start date for the
-retrival period.  Dates can be specified in the following formats:
+retrieval  period.  Dates can be specified in the following formats:
 \emph{yyyyMMdd}, \emph{yyyyMMdd HH:mm}, \emph{MM/dd/yyyy}, or
 \emph{MM/dd/yyyy HH:mm}.}
 
 \item{end_date}{is a character string that specifies the end date for the
-retrival period.  Dates can be specified in the following formats:
+retrieval  period.  Dates can be specified in the following formats:
 \emph{yyyyMMdd}, \emph{yyyyMMdd HH:mm}, \emph{MM/dd/yyyy}, or
 \emph{MM/dd/yyyy HH:mm}.}
 
 \item{data_product}{specifies the data product to be returned.  See
-\href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
-the avaliable data products.}
+\href{https://tidesandcurrents.noaa.gov/API/}{CO-OPS API Documentation} for
+the available data products.}
 
-\item{units}{a character string specifiying if the data should be returned
-using metric or english units.  Defaults to \code{'english'}.}
+\item{units}{a character string specifying if the data should be returned
+using metric or English units.  Defaults to \code{'english'}.}
 
 \item{time_zone}{a character string specifying what time zone information the
 data should be returned with.  Options include Greenwich Mean Time
@@ -36,23 +36,23 @@ Daylight Time \code{'lst_ldt'}.  Local times refer to the local time of the
 specified station.  The default is \code{'lst_ldt'}}
 
 \item{datum}{a character string indicating the datum that should be returned.
-See \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation}
-for the avaliable datums.}
+See \href{https://tidesandcurrents.noaa.gov/API/}{CO-OPS API Documentation}
+for the available datums.}
 
 \item{interval}{a character string that specifies the interval for which
-Meteorological data is returned. The api defaults to every six minutes and
+Meteorological data is returned. The API defaults to every six minutes and
 does not need to be specified.  Other option include hourly \code{'h'} and
-\code{'hilo'}.  The retrival time period specified by \strong{start_date} and
+\code{'hilo'}.  The retrieval  time period specified by \strong{start_date} and
 \strong{end_date} to create restrictions on the intervals that can be
 returned. See
-\href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
+\href{https://tidesandcurrents.noaa.gov/API/}{CO-OPS API Documentation} for
 details}
 }
 \value{
 a data frame.
 }
 \description{
-Retrive Tides Data From NOAA CO-OPS API
+Retrieve Tides Data From NOAA CO-OPS API
 }
 \examples{
 # Do Not Run

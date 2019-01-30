@@ -10,8 +10,8 @@ list_coops_stations()
 A data frame.
 }
 \description{
-This funciton produces a data frame with all NOAA stations.  The list of
-stations is retrived from
+This function produces a data frame with all NOAA stations.  The list of
+stations is retrieved  from
 \href{https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp}{NOAA's}
 website when the function is called.
 }
@@ -21,9 +21,9 @@ location and date that the station was established are included as columns.
 In addition, there are columns that provide the status of various sensors at
 the station is included.  The column names indicate the type of sensor
 
-In the status colums a value of \emph{1} indicates that sensor is working
+In the status columns a value of \emph{1} indicates that sensor is working
 A \emph{0} indicates that the sensor is not working.  If a particular
-station does not have the capablility indicated by the column name, the value
+station does not have the capability indicated by the column name, the value
 provided is \code{NA}
 }
 \examples{
