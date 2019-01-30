@@ -1,3 +1,5 @@
+^revdep$
+^cran-comments\.md$
 ^appveyor\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
