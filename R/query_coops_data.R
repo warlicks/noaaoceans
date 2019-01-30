@@ -14,7 +14,7 @@
 #' \emph{MM/dd/yyyy HH:mm}.
 #'
 #' @param data_product specifies the data product to be returned.  See
-#' \href{https://tidesandcurrents.noaa.gov/API/}{CO-OPS API Documentation} for
+#' \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 #' the available data products.
 #'
 #' @param units a character string specifying if the data should be returned
@@ -27,7 +27,7 @@
 #' specified station.  The default is \code{'lst_ldt'}
 #'
 #' @param datum a character string indicating the datum that should be returned.
-#' See \href{https://tidesandcurrents.noaa.gov/API/}{CO-OPS API Documentation}
+#' See \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation}
 #' for the available datums.
 #'
 #' @param interval a character string that specifies the interval for which
@@ -36,13 +36,14 @@
 #' \code{'hilo'}.  The retrieval  time period specified by \strong{start_date} and
 #' \strong{end_date} to create restrictions on the intervals that can be
 #' returned. See
-#' \href{https://tidesandcurrents.noaa.gov/API/}{CO-OPS API Documentation} for
+#' \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 #' details
 #'
 #' @return a data frame.
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' # Do Not Run
 #' a <- query_coops_data('9414290',
 #'                       '20170101',
@@ -50,7 +51,7 @@
 #'                       'predictions',
 #'                        interval = 'hilo',
 #'                        datum = 'MLLW')
-#' head(a)
+#' }
 
 query_coops_data <- function(station_id,
                              start_date,
@@ -61,7 +62,7 @@ query_coops_data <- function(station_id,
                              datum = NULL,
                              interval = NULL){
 
-    base_url <- "https://tidesandcurrents.noaa.gov/API/datagetter"
+    base_url <- "https://tidesandcurrents.noaa.gov/api/datagetter"
 
     ## Create a list of all params.
     query_params <- list(station = station_id,

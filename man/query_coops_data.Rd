@@ -23,7 +23,7 @@ retrieval  period.  Dates can be specified in the following formats:
 \emph{MM/dd/yyyy HH:mm}.}
 
 \item{data_product}{specifies the data product to be returned.  See
-\href{https://tidesandcurrents.noaa.gov/API/}{CO-OPS API Documentation} for
+\href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 the available data products.}
 
 \item{units}{a character string specifying if the data should be returned
@@ -36,7 +36,7 @@ Daylight Time \code{'lst_ldt'}.  Local times refer to the local time of the
 specified station.  The default is \code{'lst_ldt'}}
 
 \item{datum}{a character string indicating the datum that should be returned.
-See \href{https://tidesandcurrents.noaa.gov/API/}{CO-OPS API Documentation}
+See \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation}
 for the available datums.}
 
 \item{interval}{a character string that specifies the interval for which
@@ -45,7 +45,7 @@ does not need to be specified.  Other option include hourly \code{'h'} and
 \code{'hilo'}.  The retrieval  time period specified by \strong{start_date} and
 \strong{end_date} to create restrictions on the intervals that can be
 returned. See
-\href{https://tidesandcurrents.noaa.gov/API/}{CO-OPS API Documentation} for
+\href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 details}
 }
 \value{
@@ -55,6 +55,7 @@ a data frame.
 Retrieve Tides Data From NOAA CO-OPS API
 }
 \examples{
+\dontrun{
 # Do Not Run
 a <- query_coops_data('9414290',
                       '20170101',
@@ -62,5 +63,5 @@ a <- query_coops_data('9414290',
                       'predictions',
                        interval = 'hilo',
                        datum = 'MLLW')
-head(a)
+}
 }
