@@ -28,7 +28,7 @@ provided is \code{NA}
 }
 \examples{
 # Do Not Run
-\dontrun{
+\donttest{
 station_df <- list_coops_stations()
 }
 }

@@ -55,7 +55,7 @@ a data frame.
 Retrieve Tides Data From NOAA CO-OPS API
 }
 \examples{
-\dontrun{
+\donttest{
 # Do Not Run
 a <- query_coops_data('9414290',
                       '20170101',

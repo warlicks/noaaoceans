@@ -5,9 +5,10 @@ Version: 0.1.0
 Authors@R: person("Sean", "Warlick", email = "warlick.sean@gmail.com",
     role = c("aut", "cre"))
 Maintainer: Sean Warlick <warlick.sean@gmail.com>
-Description: The noaaoceans package provides a small set of tools for collecting
-     data from NOAA.  The functions provided in the package are wrappers around
-    NOAA's existing APIs.
+Description: Provides a small set of tools for collecting data from National 
+    Oceanic and Atmospheric Administration (NOAA) data sources.  The functions 
+    provided in the package are wrappers around NOAA's existing APIs which is
+    found at <https://tidesandcurrents.noaa.gov/api/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
