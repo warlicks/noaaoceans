@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN status](https://www.r-pkg.org/badges/version/noaaoceans)](https://cran.r-project.org/package=noaaoceans) [![Download count](https://cranlogs.r-pkg.org/badges/grand-total/noaaoceans)](https://cran.r-project.org/package=noaaoceans) [![Build Status](https://travis-ci.org/warlicks/NOAATides.svg?branch=master)](https://travis-ci.org/warlicks/noaaoceans) [![codecov](https://codecov.io/gh/warlicks/NOAATides/branch/master/graph/badge.svg)](https://codecov.io/gh/warlicks/noaaoceans)
+[![CRAN status](https://www.r-pkg.org/badges/version/noaaoceans)](https://cran.r-project.org/package=noaaoceans) [![Download count](https://cranlogs.r-pkg.org/badges/grand-total/noaaoceans)](https://cran.r-project.org/package=noaaoceans) [![Build Status](https://travis-ci.org/warlicks/NOAATides.svg?branch=master)](https://travis-ci.org/warlicks/noaaoceans) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/warlicks/noaaoceans?branch=master&svg=true)](https://ci.appveyor.com/project/warlicks/noaaoceans) [![codecov](https://codecov.io/gh/warlicks/NOAATides/branch/master/graph/badge.svg)](https://codecov.io/gh/warlicks/noaaoceans)
 
 noaaoceans
 ==========
