@@ -9,7 +9,7 @@ coops_station_inventory <- function(id){
 
     # Call the url and read the html from the response.
     response <- httr::GET(query_url)
-    print(response)
+
     station_xml <- xml2::read_html(response)
 
     # Find the body of the html
@@ -21,8 +21,12 @@ coops_station_inventory <- function(id){
     # Convert the table to a data frame
     inventory_df <- rvest::html_table(station_table)
 
-    ## TODO:CHECK IF DATA WAS RETURNED. ----
-
-    # Return the station data inventory as a data frame.
-    return(inventory_df)
+    # Check if data was returned.  Provide a warning message to check the
+    # station id if no data is returned.
+    if (nrow(inventory_df) == 0){
+        warning("No Data Returned. Check station_id provided.", call. = TRUE)
+    } else{
+        # Return the station data inventory as a data frame.
+        return(inventory_df)
+    }
 }
