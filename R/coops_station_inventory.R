@@ -7,25 +7,34 @@ coops_station_inventory <- function(id){
     query_params <- list(id = id)
     query_url <- httr::modify_url(base_url, query = query_params)
 
+    # Call URL & process the returned HTML
+    returned_html <- httr::GET(query_url)
+    processed_html <- xml2::read_html(returned_html$content)
+
+    # Check if the data inventory is missing.
+    data_inventory_status <- check_missing_inventory(processed_html)
+
+    return(data_inventory_status)
+}
     # Call the url and read the html from the response.
-    inventory_df <- process_inventory_table(query_url)
+    #inventory_df <- process_inventory_table(query_url)
 
     # Check if data was returned.  Try one more time
-    if (nrow(inventory_df) == 0) {
-        message('First Call Returned No Data. Trying Call Again')
-        Sys.sleep(3)
-        inventory_df2 <- process_inventory_table(query_url)
-
-        if (nrow(inventory_df2) == 0) {
-
-            warning(paste("No Data Returned for Station Id:", id),
-                    call. = FALSE)
-        } else {
-            return(inventory_df2)
-        }
-
-    } else{
-        # Return the station data inventory as a data frame.
-        return(inventory_df)
-    }
-}
+#     if (nrow(inventory_df) == 0) {
+#         message('First Call Returned No Data. Trying Call Again')
+#         Sys.sleep(3)
+#         inventory_df2 <- process_inventory_table(query_url)
+#
+#         if (nrow(inventory_df2) == 0) {
+#
+#             warning(paste("No Data Returned for Station Id:", id),
+#                     call. = FALSE)
+#         } else {
+#             return(inventory_df2)
+#         }
+#
+#     } else{ %>% %>% %>% %>% %>%
+#         # Return the station data inventory as a data frame.
+#         return(inventory_df)
+#     }
+# }
