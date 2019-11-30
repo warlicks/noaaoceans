@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN status](https://www.r-pkg.org/badges/version/noaaoceans)](https://cran.r-project.org/package=noaaoceans) [![Download count](https://cranlogs.r-pkg.org/badges/grand-total/noaaoceans)](https://cran.r-project.org/package=noaaoceans) [![Build Status](https://travis-ci.org/warlicks/noaaoceans.svg?branch=master)](https://travis-ci.org/warlicks/noaaoceans) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/warlicks/noaaoceans?branch=master&svg=true)](https://ci.appveyor.com/project/warlicks/noaaoceans) [![codecov](https://codecov.io/gh/warlicks/NOAATides/branch/master/graph/badge.svg)](https://codecov.io/gh/warlicks/noaaoceans)
+[![CRAN status](https://www.r-pkg.org/badges/version/noaaoceans)](https://cran.r-project.org/package=noaaoceans) [![Download count](https://cranlogs.r-pkg.org/badges/grand-total/noaaoceans)](https://cran.r-project.org/package=noaaoceans) [![Build Status](https://travis-ci.org/warlicks/noaaoceans.svg?branch=master)](https://travis-ci.org/warlicks/noaaoceans) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/warlicks/noaaoceans?branch=master&svg=true)](https://ci.appveyor.com/project/warlicks/noaaoceans) [![codecov](https://codecov.io/gh/warlicks/noaaoceans/branch/master/graph/badge.svg)](https://codecov.io/gh/warlicks/noaaoceans)
 
 noaaoceans
 ==========
@@ -49,7 +49,7 @@ wa_station %>% dplyr::as_tibble(.) %>% head()
 #> 4 9442396    La Push, Qui… WA            47.913      -124.6369   
 #> 5 9443090    Neah Bay      WA            48.3703     -124.6019   
 #> 6 9444090    Port Angeles  WA            48.1247     -123.4411   
-#> # ... with 10 more variables: date_established <chr>, water_level <chr>,
+#> # … with 10 more variables: date_established <chr>, water_level <chr>,
 #> #   winds <chr>, air_temp <chr>, water_temp <chr>, air_pressure <chr>,
 #> #   conductivity <chr>, visibility <chr>, humidity <chr>, air_gap <chr>
 ```
