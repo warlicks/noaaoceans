@@ -62,7 +62,7 @@ query_coops_data <- function(station_id,
                              end_date,
                              data_product,
                              units = 'english',
-                             time_zone = 'lst_ldt',
+                             time_zone = 'gmt',
                              datum = NULL,
                              interval = NULL,
                              bin = NULL){
@@ -79,7 +79,8 @@ query_coops_data <- function(station_id,
                          time_zone = time_zone,
                          interval = interval,
                          bin = bin,
-                         format = 'json')
+                         format = 'json',
+                         application='noaaoceans')
 
     # Set up the full url
     query_url <- httr::modify_url(base_url, query = query_params)
