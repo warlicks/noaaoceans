@@ -24,7 +24,7 @@
 #' data should be returned with.  Options include Greenwich Mean Time
 #' \code{'gmt'}, Local Standard Time \code{'lst'}, and Local Standard/Local
 #' Daylight Time \code{'lst_ldt'}.  Local times refer to the local time of the
-#' specified station.  The default is \code{'lst_ldt'}
+#' specified station.  The default is \code{'gmt'}
 #'
 #' @param datum a character string indicating the datum that should be returned.
 #' See \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation}
