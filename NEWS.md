@@ -1,3 +1,11 @@
+# 0.2.0 ()
+* Added function `coops_station_inventory()` to gather historical data availability for a CO-OPS station
+* Added bin argument to `query_coops_data()` to provide complete functionality with the CO-OPS API. 
+* For better world wide compatibility Greenwich Mean Time (GMT) is now the default for the *time_zone* argument in `query_coops_data()`
+* `query_coops_data()` is a better citizen and now provides **noaaoceans** as the Application Name when querying the CO-OPS APIC
+* Set encoding to UTF-8 to stop `No encoding supplied: defaulting to UTF-8.` from appearing when using `query_coops_data()`
+* Fixed type in vignette title. 
+
 # noaaoceans 0.1.0 (2018-01-29)
 
 * First release of the package.

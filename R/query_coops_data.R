@@ -24,7 +24,7 @@
 #' data should be returned with.  Options include Greenwich Mean Time
 #' \code{'gmt'}, Local Standard Time \code{'lst'}, and Local Standard/Local
 #' Daylight Time \code{'lst_ldt'}.  Local times refer to the local time of the
-#' specified station.  The default is \code{'lst_ldt'}
+#' specified station.  The default is \code{'gmt'}
 #'
 #' @param datum a character string indicating the datum that should be returned.
 #' See \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation}
@@ -38,6 +38,10 @@
 #' returned. See
 #' \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 #' details
+#'
+#' @param bin the bin number for the indicated currents station. If a bin is not
+#' specified for a PORTS station, the data is returned using a predefined
+#' real-time bin.
 #'
 #' @return a data frame.
 #' @export
@@ -58,9 +62,10 @@ query_coops_data <- function(station_id,
                              end_date,
                              data_product,
                              units = 'english',
-                             time_zone = 'lst_ldt',
+                             time_zone = 'gmt',
                              datum = NULL,
-                             interval = NULL){
+                             interval = NULL,
+                             bin = NULL){
 
     base_url <- "https://tidesandcurrents.noaa.gov/api/datagetter"
 
@@ -73,7 +78,9 @@ query_coops_data <- function(station_id,
                          units = units,
                          time_zone = time_zone,
                          interval = interval,
-                         format = 'json')
+                         bin = bin,
+                         format = 'json',
+                         application='noaaoceans')
 
     # Set up the full url
     query_url <- httr::modify_url(base_url, query = query_params)
@@ -82,7 +89,7 @@ query_coops_data <- function(station_id,
     API_call <- httr::GET(query_url)
 
     # Parsed the returned content as text
-    parsed <- httr::content(API_call, as = 'text')
+    parsed <- httr::content(API_call, as = 'text', encoding = 'UTF-8')
 
     # Convert the parsed text to a list
     df_list <- jsonlite::fromJSON(parsed,

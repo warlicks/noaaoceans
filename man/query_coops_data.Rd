@@ -5,8 +5,8 @@
 \title{Retrieve Tides Data From NOAA CO-OPS API}
 \usage{
 query_coops_data(station_id, start_date, end_date, data_product,
-  units = "english", time_zone = "lst_ldt", datum = NULL,
-  interval = NULL)
+  units = "english", time_zone = "gmt", datum = NULL,
+  interval = NULL, bin = NULL)
 }
 \arguments{
 \item{station_id}{is a character string that provides the a 7 character
@@ -33,7 +33,7 @@ using metric or English units.  Defaults to \code{'english'}.}
 data should be returned with.  Options include Greenwich Mean Time
 \code{'gmt'}, Local Standard Time \code{'lst'}, and Local Standard/Local
 Daylight Time \code{'lst_ldt'}.  Local times refer to the local time of the
-specified station.  The default is \code{'lst_ldt'}}
+specified station.  The default is \code{'gmt'}}
 
 \item{datum}{a character string indicating the datum that should be returned.
 See \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation}
@@ -47,6 +47,10 @@ does not need to be specified.  Other option include hourly \code{'h'} and
 returned. See
 \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 details}
+
+\item{bin}{the bin number for the indicated currents station. If a bin is not
+specified for a PORTS station, the data is returned using a predefined
+real-time bin.}
 }
 \value{
 a data frame.
