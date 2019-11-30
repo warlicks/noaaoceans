@@ -24,30 +24,30 @@
 #' station_df <- list_coops_stations()
 #' }
 
-list_coops_stations <- function(){
+list_coops_stations <- function() {
     # Call the URL with station data.
-    station_url <- 'https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp'
+    station_url <- "https://opendap.co-ops.nos.noaa.gov/stations/stationsXML.jsp"
     response <- httr::GET(station_url)
     station_xml <- xml2::read_html(response)
 
     # Get Station Names
-    station_nodes <- rvest::html_nodes(station_xml, 'station')
-    station_names <- rvest::html_attr(station_nodes, 'name')
-    station_id <- rvest::html_attr(station_nodes, 'id')
+    station_nodes <- rvest::html_nodes(station_xml, "station")
+    station_names <- rvest::html_attr(station_nodes, "name")
+    station_id <- rvest::html_attr(station_nodes, "id")
 
     # Parse out the stations location.  We have state, lat and long data to help
     # locate a given station.
-    station_lat_nodes <- rvest::html_nodes(station_xml, 'lat')
+    station_lat_nodes <- rvest::html_nodes(station_xml, "lat")
     station_lat <- rvest::html_text(station_lat_nodes)
 
-    station_long_nodes <- rvest::html_nodes(station_xml, 'long')
+    station_long_nodes <- rvest::html_nodes(station_xml, "long")
     station_long <- rvest::html_text(station_long_nodes)
 
-    station_state_nodes <- rvest::html_nodes(station_xml, 'state')
+    station_state_nodes <- rvest::html_nodes(station_xml, "state")
     station_state <- rvest::html_text(station_state_nodes)
 
     # Parse the data a station was founded.
-    date_established_nodes <- rvest::html_nodes(station_xml, 'date_established')
+    date_established_nodes <- rvest::html_nodes(station_xml, "date_established")
     date_established <- rvest::html_text(date_established_nodes)
 
 
@@ -62,10 +62,10 @@ list_coops_stations <- function(){
 
     # We want to add columns for all the possible sensor names. We start by
     # finding all the parameter nodes.
-    parameter_nodes <- rvest::html_nodes(station_xml, 'parameter')
+    parameter_nodes <- rvest::html_nodes(station_xml, "parameter")
 
     # We then extract all the sensor names and create list of unique names
-    sensor_names <- rvest::html_attr(parameter_nodes, 'name')
+    sensor_names <- rvest::html_attr(parameter_nodes, "name")
     sensor_names <- unique(sensor_names)
     sensor_names <- sensor_names[sensor_names != ""]
 
@@ -77,7 +77,7 @@ list_coops_stations <- function(){
     #Update column names to make the names consistent
     col_names <- names(status_station_df)
     col_names <- tolower(col_names)
-    col_names <- sub(' ', '_', col_names)
+    col_names <- sub(" ", "_", col_names)
 
     names(status_station_df) <- col_names
 
