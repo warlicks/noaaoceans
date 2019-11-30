@@ -1,8 +1,17 @@
-#' Title
+#' List Co-Ops Stations With Missing Data Inventory
 #'
+#' This is an internal function that is used by \code{\link{coops_station_inventory}}
+#' to check it the provided id is among the stations where the data inventory is
+#' known to be missing. This list is accurate as of November 29, 2019.
 #'
+#' It would have been preferable to have automated this check, however the heavy
+#' use of JavaScript by the station inventory pages has made it difficult to
+#' automate these checks without the introduction of more dependencies to the
+#' package.  In order to avoid using tools like RSelenium or V8, this check is
+#' hard coded this check.
 #'
-#' @return
+#' @return a vector where each item is a station id where the data inventory is
+#'    missing.
 #' @keywords internal
 #' @noRd
 #'
