@@ -4,7 +4,7 @@ author: "Sean Warlick"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting Started With NOAATides}
+  %\VignetteIndexEntry{Getting Started With noaaoceans}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
