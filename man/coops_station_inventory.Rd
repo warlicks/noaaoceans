@@ -48,14 +48,13 @@ hard coded. Please create an
 the list stations missing data inventory.
 }
 \examples{
-#' \donttest{
+\donttest{
  # Working station to show results.
  inventory_df<- coops_station_inventory(station_id=9761115)
  print(inventory_df)
 
  # Station with known missing data inventory
  coops_station_inventory(station_id=8517986)
-
 }
 
 }

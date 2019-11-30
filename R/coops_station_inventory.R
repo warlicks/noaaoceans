@@ -39,7 +39,7 @@
 #' @export
 #'
 #' @examples
-#' #' \donttest{
+#' \donttest{
 #'  # Working station to show results.
 #'  inventory_df<- coops_station_inventory(station_id=9761115)
 #'  print(inventory_df)
@@ -62,7 +62,9 @@ coops_station_inventory <- function(station_id){
     # created during development and testing of the package.  I was unable to
     # automate these checks due to heavy use of Java Script on the website.
     if (station_id %in% known_missing_inventory()) {
-        warning('Data Inventory Not available For Station ID', call. = TRUE)
+        warning(paste('Data Inventory Not available For Station ID:',
+                      station_id),
+                call. = TRUE)
     } else {
         # Call URL and parse the data
         inventory_df <- process_inventory_table(query_url)
@@ -76,7 +78,10 @@ coops_station_inventory <- function(station_id){
 
             if (nrow(inventory_df) == 0) {
 
-                warning(paste("No Data Returned for Station Id:", id),
+                warning(paste("No Data Returned for Station Id:",
+                              station_id,
+                              '\n Manually Check URL in Your Browswer\n',
+                              query_url),
                         call. = FALSE)
             } else {
                 return(inventory_df)
