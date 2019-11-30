@@ -6,7 +6,7 @@
 \usage{
 query_coops_data(station_id, start_date, end_date, data_product,
   units = "english", time_zone = "lst_ldt", datum = NULL,
-  interval = NULL)
+  interval = NULL, bin = NULL)
 }
 \arguments{
 \item{station_id}{is a character string that provides the a 7 character
@@ -47,6 +47,10 @@ does not need to be specified.  Other option include hourly \code{'h'} and
 returned. See
 \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 details}
+
+\item{bin}{the bin number for the indicated currents station. If a bin is not
+specified for a PORTS station, the data is returned using a predefined
+real-time bin.}
 }
 \value{
 a data frame.

@@ -39,6 +39,10 @@
 #' \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 #' details
 #'
+#' @param bin the bin number for the indicated currents station. If a bin is not
+#' specified for a PORTS station, the data is returned using a predefined
+#' real-time bin.
+#'
 #' @return a data frame.
 #' @export
 #'
@@ -60,7 +64,8 @@ query_coops_data <- function(station_id,
                              units = 'english',
                              time_zone = 'lst_ldt',
                              datum = NULL,
-                             interval = NULL){
+                             interval = NULL,
+                             bin = NULL){
 
     base_url <- "https://tidesandcurrents.noaa.gov/api/datagetter"
 
@@ -73,6 +78,7 @@ query_coops_data <- function(station_id,
                          units = units,
                          time_zone = time_zone,
                          interval = interval,
+                         bin = bin,
                          format = 'json')
 
     # Set up the full url
@@ -82,7 +88,7 @@ query_coops_data <- function(station_id,
     API_call <- httr::GET(query_url)
 
     # Parsed the returned content as text
-    parsed <- httr::content(API_call, as = 'text')
+    parsed <- httr::content(API_call, as = 'text', encoding = 'UTF-8')
 
     # Convert the parsed text to a list
     df_list <- jsonlite::fromJSON(parsed,
