@@ -1,11 +1,10 @@
 process_inventory_table <- function(query_url){
-    # Call the url and read the html from the response.
-    response <- httr::GET(query_url)
-
-    station_xml <- xml2::read_html(response)
+    # Call URL & process the returned HTML
+    returned_html <- httr::GET(query_url)
+    processed_html <- xml2::read_html(returned_html$content)
 
     # Find the body of the html
-    station_body <- rvest::html_node(station_xml, 'body')
+    station_body <- rvest::html_node(processed_html, 'body')
 
     # Find the table node in the body.
     station_table <- rvest::html_node(station_body, 'table')
