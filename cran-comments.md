@@ -1,17 +1,19 @@
-# Resubmission 
-This is a re-submission and I have fixed:  
-* Package description no longer starts with "This package."  
-* Added a URL for NOAA to the description file.  
-* Explained all acronyms in the description file.   
-* Replaced `\dontrun{}` with `\donttest{}` in all .Rd files.    
 
-## Test environments
-* local OS X install, R 3.5.1
-* Ubuntu 14.04 (on travis-ci), R 3.5.1, R 4.4.4 and devel
-* win-builder (devel and release)
+# Test environments
+* local macOS install, R 3.6.1
+* Ubuntu 16.04.6 LTS (on travis-ci), R 3.6.1, R 3.5.3 and devel
+* Windows (on Rhub), Devel, Release-patched.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 notes
 
-* This is a new release.
+## Reverse dependencies
+No reverse dependencies identified. 
+https://github.com/warlicks/noaaoceans/tree/master/revdep/README.md
+
+-----
+This release adds new features and makes minor improvements to existing functions. 
+
+Thank You
+Sean Warlick
