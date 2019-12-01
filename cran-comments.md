@@ -2,7 +2,7 @@
 # Test environments
 * local macOS install, R 3.6.1
 * Ubuntu 16.04.6 LTS (on travis-ci), R 3.6.1, R 3.5.3 and devel
-* win-builder (devel and release)
+* Windows (on Rhub), Devel, Release-patched.
 
 ## R CMD check results
 
