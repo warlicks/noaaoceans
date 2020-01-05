@@ -1,11 +1,28 @@
-#' Title
+#' Query Data From NOAA's CO-OPS Derived Product API
 #'
-#' @param station_id
-#' @param product_name
-#' @param year
-#' @param units
+#' Provides access to data available from NOAA's CO-OPS \href{https://tidesandcurrents.noaa.gov/dpapi/latest/#intro}{Derived Product API}. Four derived data products are available through the API: 1) Top Ten Water Levels, 2) Annual Flood Days, 3) Extreme Water Levels and 4) Sea Level Trends.  More detail about each data product is available with the \href{https://tidesandcurrents.noaa.gov/dpapi/latest/#intro}{API's documentation}
 #'
-#' @return
+#' @param station_id an optional string that provides the a 7 character station
+#' id. If omitted the derived product API returns data for all stations.
+#'
+#' @param product_name a string providing the name of the derived data product.
+#' Derived products include Top Ten Water Levels (\code{'toptenwaterlevels'}),
+#' Annual Flood Days (\code{'annualflooddays'}), Extreme Water Levels
+#' (\code{'extremewaterlevels'}) and Sea Level Trends (\code{'sealeveltrends'}).
+#'
+#' @param year an optional string used to limit the results from the annual
+#' flood days endpoint to the indicated year. The argument is ignored if used
+#' with other data products.
+#'
+#' @param affil an argument used to limit the results to U.S. (\code{'US'}) or
+#' Global stations (\code{'Global'}). The argument is ignored if used with
+#' other data products.
+#'
+#' @param units a character string specifying if the data should be returned
+#' using metric or English units. Defaults to \code{'english'}
+#'
+#' @return a data frame
+#'
 #' @export
 #'
 #' @examples
@@ -14,9 +31,12 @@ query_derived_products <- function(station_id = NULL,
                                    product_name = NULL,
                                    year = NULL,
                                    affil = NULL,
-                                   units = "metric") {
+                                   units = "english") {
+
     base_url <- "https://tidesandcurrents.noaa.gov/dpapi/latest/webapi/product.json"
 
+    # Set name of the product as returned by the API so we can access the
+    # the data by name in the list returned by parsing the data.
     if (product_name == "toptenwaterlevels") {
         list_name <- "topTenWaterLevels"
     } else if (product_name == "annualflooddays") {
@@ -34,7 +54,7 @@ query_derived_products <- function(station_id = NULL,
     query_params <- list(station = station_id,
                          name = product_name,
                          year = year,
-                         affil = affil,
+                         affil = toupper(affil),
                          units = units,
                          application = "noaaoceans")
 
