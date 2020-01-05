@@ -1,7 +1,24 @@
-query_derived_products <- function(station_id=NULL, product_name=NULL, units="metric") {
+#' Title
+#'
+#' @param station_id
+#' @param product_name
+#' @param year
+#' @param units
+#'
+#' @return
+#' @export
+#'
+#' @examples
 
-    if (product_name == "toptenwaterlevels"){
+query_derived_products <- function(station_id = NULL,
+                                   product_name = NULL,
+                                   year = NULL,
+                                   units = "metric") {
+
+    if (product_name == "toptenwaterlevels") {
         list_name <- "topTenWaterLevels"
+    } else if (product_name == "annualflooddays") {
+        list_name <- "annualFloodDays"
     }
 
     base_url <- "https://tidesandcurrents.noaa.gov/dpapi/latest/webapi/product.json"
@@ -9,6 +26,7 @@ query_derived_products <- function(station_id=NULL, product_name=NULL, units="me
     # Prepare the query & make the request.
     query_params <- list(station = station_id,
                          name = product_name,
+                         year = year,
                          units = units,
                          application = "noaaoceans")
 
