@@ -38,8 +38,14 @@ test_that("Test that station list returns a data frame", {
     expect_is(list_coops_stations(), "data.frame")
 })
 
-test_that("Derived Products Function Rutnrs a data frame", {
+test_that("Derived products function returns a data frame", {
     skip_on_cran()
     expect_is(query_derived_products(product_name = "toptenwaterlevels"),
               "data.frame")
+
+    expect_is(query_derived_products(product_name = "toptenwaterlevels",
+                                     station_id = "1611400"),
+              "data.frame")
+
+
 })
