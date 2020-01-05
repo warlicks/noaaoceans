@@ -1,7 +1,7 @@
 Package: noaaoceans
 Type: Package
 Title: Collect Ocean Data from NOAA
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: person("Sean", "Warlick", email = "warlick.sean@gmail.com",
     role = c("aut", "cre"))
 Maintainer: Sean Warlick <warlick.sean@gmail.com>
