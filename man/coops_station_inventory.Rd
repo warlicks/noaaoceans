@@ -15,34 +15,33 @@ A data frame.
 }
 \description{
 Find the historical data availability for a CO-OPS station.  This data is
-obtained by scraping the data inventory page for the station. See the page for the
+obtained by scraping the data inventory page for the station. See the page
+for the#'
 \href{https://tidesandcurrents.noaa.gov/inventory.html?id=9761115}{Barbuda(station_id=9761115)}
 as an example.
 }
 \details{
 In the returned data frame each row represents a particular oceanographic or
-meteorological measurement. The name of the measurement is provided in the first
-column (\strong{Type}). The second column, \strong{From}, provides a timestamp
-indicating the earliest available data for the measurement. The third column,
-\strong{To}, provides the last date and time when the measurement is
-available. When there are gaps in availability there will be two rows from
-a given measurement. See the table below as an example.
+meteorological measurement. The name of the measurement is provided in the
+first column (\strong{Type}). The second column, \strong{From}, provides a
+timestamp indicating the earliest available data for the measurement. The
+third column, \strong{To}, provides the last date and time when the
+measurement is available. When there are gaps in availability there will be
+two rows from a given measurement. See the table below as an example.
 
-\tabular{lcc}{
-\strong{Type}  \tab  \strong{From}  \tab  \strong{To}  \cr
-Wind  \tab  2011-06-10 21:06  \tab  2019-11-30 06:36  \cr
-Air Temperature  \tab  2011-06-10 20:48  \tab  2019-11-30 06:36  \cr
-Water Temperature  \tab  2011-06-10 20:48  \tab  2013-03-10 03:48  \cr
-Water Temperature  \tab  2015-04-03 13:06  \tab  2019-11-30 06:36  \cr
-}
+\tabular{lcc}{ \strong{Type}  \tab  \strong{From}  \tab  \strong{To}  \cr
+Wind  \tab  2011-06-10 21:06  \tab  2019-11-30 06:36  \cr Air Temperature
+\tab  2011-06-10 20:48  \tab  2019-11-30 06:36  \cr Water Temperature  \tab
+2011-06-10 20:48  \tab  2013-03-10 03:48  \cr Water Temperature  \tab
+2015-04-03 13:06  \tab  2019-11-30 06:36  \cr }
 
 As of the release of version 0.20.0 there are thirteen stations where the
-data inventory is missing and an \strong{Error} will be returned if queried with
-\code{coops_station_inventory()}.  The list of stations without a data
-inventory can be accessed by calling \code{noaaoceans:::known_missing_inventory()}.
-Due to heavy use of JavaScript on data inventory pages and a desire
-to keep package dependencies to a minimum the list of known stations has been
-hard coded. Please create an
+data inventory is missing and an \strong{Error} will be returned if queried
+with \code{coops_station_inventory()}. The list of stations without a data
+inventory can be accessed by calling
+\code{noaaoceans:::known_missing_inventory()}. Due to heavy use of JavaScript
+on data inventory pages and a desire to keep package dependencies to a
+minimum the list of known stations has been hard coded. Please create an
 \href{https://github.com/warlicks/noaaoceans/issues}{Issue} or
 \href{https://github.com/warlicks/noaaoceans/pulls}{Pull Request} to update
 the list stations missing data inventory.

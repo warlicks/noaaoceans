@@ -42,8 +42,8 @@ for the available datums.}
 \item{interval}{a character string that specifies the interval for which
 Meteorological data is returned. The API defaults to every six minutes and
 does not need to be specified.  Other option include hourly \code{'h'} and
-\code{'hilo'}.  The retrieval  time period specified by \strong{start_date} and
-\strong{end_date} to create restrictions on the intervals that can be
+\code{'hilo'}.  The retrieval  time period specified by \strong{start_date}
+and \strong{end_date} to create restrictions on the intervals that can be
 returned. See
 \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 details}
