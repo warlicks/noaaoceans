@@ -52,6 +52,7 @@ test_that("Derived products function returns a data frame", {
                                      station_id = "1611400"),
               "data.frame")
 
+    # Annual Flood Days
     expect_is(query_derived_products(product_name = "annualflooddays"),
               "data.frame")
 
@@ -62,5 +63,13 @@ test_that("Derived products function returns a data frame", {
     expect_is(query_derived_products(product_name = "annualflooddays",
                                      station_id = "1611400",
                                      year=2018),
+              "data.frame")
+
+    # Extreme Water Levels
+    expect_is(query_derived_products(product_name = "extremewaterlevels"),
+              "data.frame")
+
+    expect_is(query_derived_products(product_name = "extremewaterlevels",
+                                     station_id = "1611400"),
               "data.frame")
 })

@@ -19,6 +19,8 @@ query_derived_products <- function(station_id = NULL,
         list_name <- "topTenWaterLevels"
     } else if (product_name == "annualflooddays") {
         list_name <- "annualFloodDays"
+    } else if (product_name== "extremewaterlevels") {
+        list_name <- "ExtremeWaterLevels"
     }
 
     base_url <- "https://tidesandcurrents.noaa.gov/dpapi/latest/webapi/product.json"
