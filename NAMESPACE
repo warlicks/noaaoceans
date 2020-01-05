@@ -3,3 +3,4 @@
 export(coops_station_inventory)
 export(list_coops_stations)
 export(query_coops_data)
+export(query_derived_products)
