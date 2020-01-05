@@ -13,22 +13,28 @@
 query_derived_products <- function(station_id = NULL,
                                    product_name = NULL,
                                    year = NULL,
+                                   affil = NULL,
                                    units = "metric") {
+    base_url <- "https://tidesandcurrents.noaa.gov/dpapi/latest/webapi/product.json"
 
     if (product_name == "toptenwaterlevels") {
         list_name <- "topTenWaterLevels"
     } else if (product_name == "annualflooddays") {
         list_name <- "annualFloodDays"
-    } else if (product_name== "extremewaterlevels") {
+    } else if (product_name == "extremewaterlevels") {
         list_name <- "ExtremeWaterLevels"
+    } else if (product_name == "sealeveltrends") {
+        list_name <- "SeaLvlTrends"
+        base_url <- "https://tidesandcurrents.noaa.gov/dpapi/latest/webapi/product/sealvltrends.json"
     }
 
-    base_url <- "https://tidesandcurrents.noaa.gov/dpapi/latest/webapi/product.json"
+
 
     # Prepare the query & make the request.
     query_params <- list(station = station_id,
                          name = product_name,
                          year = year,
+                         affil = affil,
                          units = units,
                          application = "noaaoceans")
 

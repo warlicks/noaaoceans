@@ -72,4 +72,12 @@ test_that("Derived products function returns a data frame", {
     expect_is(query_derived_products(product_name = "extremewaterlevels",
                                      station_id = "1611400"),
               "data.frame")
+
+    # Sea level trends
+    expect_is(query_derived_products(product_name = "sealeveltrends"),
+              "data.frame")
+
+    expect_is(query_derived_products(product_name = "sealeveltrends",
+                                     station_id = "1611400"),
+              "data.frame")
 })
