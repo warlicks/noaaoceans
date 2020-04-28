@@ -4,9 +4,17 @@
 \alias{query_coops_data}
 \title{Retrieve Tides Data From NOAA CO-OPS API}
 \usage{
-query_coops_data(station_id, start_date, end_date, data_product,
-  units = "english", time_zone = "gmt", datum = NULL,
-  interval = NULL, bin = NULL)
+query_coops_data(
+  station_id,
+  start_date,
+  end_date,
+  data_product,
+  units = "english",
+  time_zone = "gmt",
+  datum = NULL,
+  interval = NULL,
+  bin = NULL
+)
 }
 \arguments{
 \item{station_id}{is a character string that provides the a 7 character
