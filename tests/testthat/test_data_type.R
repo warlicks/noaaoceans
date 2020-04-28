@@ -81,3 +81,12 @@ test_that("Derived products function returns a data frame", {
                                      station_id = "1611400"),
               "data.frame")
 })
+
+test_that('Errors Are Returned With Invalid Opitons', {
+    expect_error(query_derived_products(station_id = '1611400',
+                                        product_name = 'fake')
+                 )
+    expect_warning(query_derived_products(station_id = 'notreal',
+                                          product_name = 'toptenwaterlevels')
+                   )
+})
