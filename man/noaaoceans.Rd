@@ -3,7 +3,6 @@
 \docType{package}
 \name{noaaoceans}
 \alias{noaaoceans}
-\alias{noaaoceans-package}
 \title{noaaoceans: A package for collecting oceans and weather data from NOAA.}
 \description{
 The noaaoceans package provides several functions to access NOAA APIs.  It

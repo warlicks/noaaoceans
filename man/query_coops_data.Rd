@@ -4,9 +4,17 @@
 \alias{query_coops_data}
 \title{Retrieve Tides Data From NOAA CO-OPS API}
 \usage{
-query_coops_data(station_id, start_date, end_date, data_product,
-  units = "english", time_zone = "gmt", datum = NULL,
-  interval = NULL, bin = NULL)
+query_coops_data(
+  station_id,
+  start_date,
+  end_date,
+  data_product,
+  units = "english",
+  time_zone = "gmt",
+  datum = NULL,
+  interval = NULL,
+  bin = NULL
+)
 }
 \arguments{
 \item{station_id}{is a character string that provides the a 7 character
@@ -42,8 +50,8 @@ for the available datums.}
 \item{interval}{a character string that specifies the interval for which
 Meteorological data is returned. The API defaults to every six minutes and
 does not need to be specified.  Other option include hourly \code{'h'} and
-\code{'hilo'}.  The retrieval  time period specified by \strong{start_date} and
-\strong{end_date} to create restrictions on the intervals that can be
+\code{'hilo'}.  The retrieval  time period specified by \strong{start_date}
+and \strong{end_date} to create restrictions on the intervals that can be
 returned. See
 \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
 details}
