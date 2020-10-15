@@ -7,7 +7,7 @@ query_meta_data <- function(station_id = NULL,
                             radius = NULL,
                             bin = NULL) {
 
-    base_url <- "http://tidesandcurrents.noaa.gov/mdapi/v1.0/webapi/stations"
+    base_url <- "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/"
 
     # Run checks to make sure we can create a valid API call
     if (!is.null(resource) & is.null(station_id)) {
@@ -18,6 +18,7 @@ query_meta_data <- function(station_id = NULL,
 
 
     query_params <- list(type = type,
+                         #TODO: Setr up expand so its not in the url if not used.
                          expand = paste(expand, collapse = ','),
                          radius = radius,
                          bin = bin,
@@ -25,7 +26,7 @@ query_meta_data <- function(station_id = NULL,
     url <- httr::parse_url(base_url)
 
     query_url <- httr::modify_url(url, path = c(url$path, station_id, resource), query = query_params)
-
+    print(query_url)
     api_response <- httr::GET(query_url)
     return(api_response)
 
