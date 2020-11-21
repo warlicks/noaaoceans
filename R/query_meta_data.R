@@ -1,11 +1,11 @@
 
-query_meta_data <- function(station_id = NULL,
-                            resource = NULL,
-                            type = NULL,
-                            units = 'english',
-                            expand = NULL,
-                            radius = NULL,
-                            bin = NULL) {
+query_metadata <- function(station_id = NULL,
+                           resource = NULL,
+                           type = NULL,
+                           units = 'english',
+                           expand = NULL,
+                           radius = NULL,
+                           bin = NULL) {
 
     base_url <- "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/"
 
@@ -14,7 +14,11 @@ query_meta_data <- function(station_id = NULL,
         stop('If resource argument provided, a station id must be provided')
     }
 
-
+    if (is.null(resource)) {
+        resource_name <- 'stations'
+    } else {
+        resource_name <- resource
+    }
 
 
     query_params <- list(type = type,
@@ -25,9 +29,20 @@ query_meta_data <- function(station_id = NULL,
                          application = "noaaoceans")
     url <- httr::parse_url(base_url)
 
-    query_url <- httr::modify_url(url, path = c(url$path, station_id, resource), query = query_params)
-    print(query_url)
+    query_url <- httr::modify_url(url,
+                                  path = c(url$path, station_id, resource),
+                                  query = query_params)
+
+
+
     api_response <- httr::GET(query_url)
-    return(api_response)
+
+    # Convert response to json/text then to a data frame.
+    content <- httr::content(api_response, as = "text",encoding = "UTF-8")
+    df <- jsonlite::fromJSON(content,
+                             flatten = TRUE,
+                             simplifyDataFrame = TRUE)[[resource_name]]
+
+    return(df)
 
     }
