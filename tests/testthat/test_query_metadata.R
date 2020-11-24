@@ -9,7 +9,7 @@ test_that("Data Frame is Returned for Datums Call", {
 })
 
 test_that("Data Frame is Returned for Superseded datums Resource Call", {
-    expect_is(query_metadata('9075065', 'supersededdatums'), 'data.frame')
+    expect_is(query_metadata('1611347', 'supersededdatums'), 'data.frame')
 })
 
 test_that("Data Frame is Returned for harcon Resource Call", {
@@ -39,9 +39,9 @@ test_that("Data Frame is Returned for benchmarks Resource Call", {
 })
 
 test_that("Data Frame is Returned for tide prediction offset Resource Call", {
-    expect_is(query_metadata('9075065', 'tidepredoffsets'), 'data.frame')
+    expect_is(query_metadata('1610367', 'tidepredoffsets'), 'data.frame')
 })
 
 test_that("Data Frame is Returned for floodlevels Resource Call", {
-    expect_is(query_metadata('9075065', 'floodlevels'), 'data.frame')
+    expect_is(query_metadata('1611400', 'floodlevels'), 'data.frame')
 })
