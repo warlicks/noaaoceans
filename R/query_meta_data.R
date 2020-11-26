@@ -2,6 +2,7 @@
 query_metadata <- function(station_id = NULL,
                            resource = NULL,
                            type = NULL,
+                           ports = NULL,
                            units = 'english',
                            expand = NULL,
                            radius = NULL,
@@ -30,6 +31,7 @@ query_metadata <- function(station_id = NULL,
 
     query_params <- list(type = type,
                          #TODO: Setr up expand so its not in the url if not used.
+                         ports = ports,
                          expand = paste(expand, collapse = ','),
                          radius = radius,
                          bin = bin,

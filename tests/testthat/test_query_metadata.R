@@ -1,4 +1,11 @@
 context("Test Data Types for Metadata Function")
+# Check that each resource call returns a data frame. ----
+
+## We need to make this check because some resources have a
+## slightly differnt JSON structure.
+test_that("Data Frame is returned for all stations", {
+    expect_is(query_metadata(), 'data.frame')
+})
 
 test_that("Data Frame is Returned for Non Resource Call", {
     expect_is(query_metadata('9414290'), 'data.frame')
@@ -44,4 +51,23 @@ test_that("Data Frame is Returned for tide prediction offset Resource Call", {
 
 test_that("Data Frame is Returned for floodlevels Resource Call", {
     expect_is(query_metadata('1611400', 'floodlevels'), 'data.frame')
+})
+
+# Test that data frame is returned when we specify type. ----
+test_that("Data Frame is returned for call with type specified", {
+    expect_is(query_metadata(type='waterlevels'), 'data.frame')
+})
+
+# Test that data frame is returned when ports is specified ----
+test_that("Data Frame is returned for call with ports specified", {
+    expect_is(query_metadata(ports='ca'), 'data.frame')
+})
+
+# Check that error is returned when appropriate ----
+test_that("Error for a fake station", {
+    expect_error(query_metadata('fake'))
+})
+
+test_that("Error for a fake resource", {
+    expect_error(query_metadata('9414290', resource = 'fake'))
 })
