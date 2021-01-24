@@ -1,10 +1,55 @@
+#' Query CO-OPS API for Station Metadata
+#'
+#' Provides easy access to the
+#' \href{https://api.tidesandcurrents.noaa.gov/mdapi/prod/#intro}{CO-OPS Metadata API}.
+#' The api makes information about measurement stations available to users.
+#' Information about a single station or a collection of stations can be
+#' accessed. Depending on the type of station queried different information is
+#' returned.
+#'
+#' @param station_id an optional string that provides the a 7 character station
+#' id. If omitted the derived product API returns data for all stations.
+#'
+#' @param resource a character string indicating they type of information to
+#' request for a specific station. A list of resource identifiers is available
+#' in the \href{https://api.tidesandcurrents.noaa.gov/mdapi/prod/#Resource}{API Doucmentation}
+#'
+#' @param type a character string indicating the sensor of interest. Specifying
+#' a sensor of interest returns a data frame with all stations that have the
+#' particular sensor. A list of sensor identifiers is available in the
+#' \href{https://api.tidesandcurrents.noaa.gov/mdapi/prod/#Type}{API Doucmentation}
+#'
+#' @param ports A two character string indicating specific ports.
+#'
+#' @param units a character string specifying if the data should be returned
+#' using metric or English units. Defaults to \code{'english'}
+#'
+#' @param radius an optional numeric argument indicating the radius in nautical
+#' miles to search for nearby stations
+#'
+#' @param bin an optional (positive integer) argument to requests for currents
+#' station harmonic constituents. If not specified, all the bins will be
+#' returned.
+#'
+#' @return A data frame. The content of the data frame is dependent on the API
+#' call. See the API documentation for specifics.
+#'
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' # Query a single stations sensors.
+#' sensor_df <- query_metadata('9414290', 'sensors')
+#'
+#' # Query all stations
+#' all_stations_df <- query_metadata()
+#'}
 
 query_metadata <- function(station_id = NULL,
                            resource = NULL,
                            type = NULL,
                            ports = NULL,
                            units = 'english',
-                           expand = NULL,
                            radius = NULL,
                            bin = NULL) {
 
@@ -28,16 +73,14 @@ query_metadata <- function(station_id = NULL,
         resource_name <- resource
     }
 
-
+    # Construct URL
     query_params <- list(type = type,
-                         #TODO: Setr up expand so its not in the url if not used.
                          ports = ports,
-                         expand = paste(expand, collapse = ','),
                          radius = radius,
                          bin = bin,
                          application = "noaaoceans")
-    url <- httr::parse_url(base_url)
 
+    url <- httr::parse_url(base_url)
     query_url <- httr::modify_url(url,
                                   path = c(url$path, station_id, resource),
                                   query = query_params)
@@ -46,9 +89,10 @@ query_metadata <- function(station_id = NULL,
 
     api_response <- httr::GET(query_url)
     httr::stop_for_status(api_response)
+
     # Convert response to json/text then to a data frame.
     content <- httr::content(api_response, as = "text",encoding = "UTF-8")
-    if (!is.null(resource_name)){
+    if (!is.null(resource_name)) {
         df <- jsonlite::fromJSON(content,
                                  flatten = TRUE,
                                  simplifyDataFrame = TRUE)[[resource_name]]
