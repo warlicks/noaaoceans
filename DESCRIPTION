@@ -22,7 +22,7 @@ Suggests:
     ggplot2,
     maps,
     mapdata
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Imports: httr,
     jsonlite,
     rvest,
