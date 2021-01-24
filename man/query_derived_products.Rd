@@ -41,8 +41,8 @@ for the details an it's content.
 Provides access to data available from NOAA's CO-OPS \href{https://tidesandcurrents.noaa.gov/dpapi/latest/#intro}{Derived Product API}. Four derived data products are available through the API: 1) Top Ten Water Levels, 2) Annual Flood Days, 3) Extreme Water Levels and 4) Sea Level Trends.  More detail about each data product is available with the \href{https://tidesandcurrents.noaa.gov/dpapi/latest/#intro}{API's documentation}
 }
 \details{
-Reuslts are returned as a data frame specific to each product. For the varialbes
-returned with each endpont see the appropriate section in the documentation.
+Results are returned as a data frame specific to each product. For the variables
+returned with each endpoint see the appropriate section in the documentation.
 
 \itemize{
    \item \href{https://tidesandcurrents.noaa.gov/dpapi/latest/#toptenwls}{Top Ten Water Levels}
