@@ -6,7 +6,7 @@
 * Added bin argument to `query_coops_data()` to provide complete functionality with the CO-OPS API. 
 * Set encoding to UTF-8 to stop `No encoding supplied: defaulting to UTF-8.` from appearing when using `query_coops_data()`
 
-## Minor Improvments 
+## Minor Improvements 
 * For better world wide compatibility Greenwich Mean Time (GMT) is now the default for the *time_zone* argument in `query_coops_data()`
 * `query_coops_data()` is a better citizen and now provides **noaaoceans** as the Application Name when querying the CO-OPS API.
 

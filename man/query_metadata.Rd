@@ -20,12 +20,12 @@ id. If omitted the derived product API returns data for all stations.}
 
 \item{resource}{a character string indicating they type of information to
 request for a specific station. A list of resource identifiers is available
-in the \href{https://api.tidesandcurrents.noaa.gov/mdapi/prod/#Resource}{API Doucmentation}}
+in the \href{https://api.tidesandcurrents.noaa.gov/mdapi/prod/#Resource}{API Documentation}}
 
 \item{type}{a character string indicating the sensor of interest. Specifying
 a sensor of interest returns a data frame with all stations that have the
 particular sensor. A list of sensor identifiers is available in the
-\href{https://api.tidesandcurrents.noaa.gov/mdapi/prod/#Type}{API Doucmentation}}
+\href{https://api.tidesandcurrents.noaa.gov/mdapi/prod/#Type}{API Documentation}}
 
 \item{ports}{A two character string indicating specific ports.}
 
