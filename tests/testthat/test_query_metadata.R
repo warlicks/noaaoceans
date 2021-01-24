@@ -71,3 +71,7 @@ test_that("Error for a fake station", {
 test_that("Error for a fake resource", {
     expect_error(query_metadata('9414290', resource = 'fake'))
 })
+
+test_that('Error when resource provided but no station id', {
+    expect_error(query_metadata(resource='details'))
+})
