@@ -12,3 +12,4 @@ scratchpad.R
 
 inventory_dev.R
 compare_implementations.R
+^notebooks$
