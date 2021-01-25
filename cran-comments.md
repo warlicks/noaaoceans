@@ -1,8 +1,8 @@
 
 # Test environments
-* local macOS install, R 3.6.1
-* Ubuntu 16.04.6 LTS (on travis-ci), R 3.6.1, R 3.5.3 and devel
-* Windows (on Rhub), Devel, Release-patched.
+* local Ubuntu 20.4.1 LTS install, R 3.6.3
+* MacOS 10.13 (on travis-ci), R 4.0.3, 3.6.3
+* Windows (on Win-builder), Devel, Release-patched, old release.
 
 ## R CMD check results
 
