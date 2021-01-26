@@ -1,7 +1,7 @@
 # 0.3.0
 ## New Features
 * Added function `query_metadata()` to gather information for stations via the [CO-OPS Metadata API](https://api.tidesandcurrents.noaa.gov/mdapi/prod/#intro)
-* Added function `query_derived_products()` to gather data from the [CO-OPS Derviced Product API](https://tidesandcurrents.noaa.gov/dpapi/latest/#intro)
+* Added function `query_derived_products()` to gather data from the [CO-OPS Derived Product API](https://tidesandcurrents.noaa.gov/dpapi/latest/#intro)
 
 # 0.2.0
 ## New Features 
