@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
   
 # noaaoceans
 
-The **noaaoceans** package is designed to facilitate access to various National Oceanic and Atmospheric Administration (NOAA) data sources.  The current version focuses on accessing data from the [CO-OPS API](https://tidesandcurrents.noaa.gov/api/).  The package also facilitates the collection of basic metadata for each of the stations that collect the data available in the API.  
+The **noaaoceans** package is designed to facilitate access to various National Oceanic and Atmospheric Administration (NOAA) data sources.  The current version focuses on accessing data from the [CO-OPS API](https://api.tidesandcurrents.noaa.gov/api/prod/).  The package also facilitates the collection of basic metadata for each of the stations that collect the data available in the API.  
 
 ## Installing  
 The current release of **noaaoceans** can be installed from CRAN.

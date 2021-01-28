@@ -15,7 +15,7 @@ status](https://ci.appveyor.com/api/projects/status/github/warlicks/noaaoceans?b
 The **noaaoceans** package is designed to facilitate access to various
 National Oceanic and Atmospheric Administration (NOAA) data sources. The
 current version focuses on accessing data from the [CO-OPS
-API](https://tidesandcurrents.noaa.gov/api/). The package also
+API](https://api.tidesandcurrents.noaa.gov/api/prod/). The package also
 facilitates the collection of basic metadata for each of the stations
 that collect the data available in the API.
 
@@ -113,6 +113,7 @@ water_temp %>%
     labs(x = "Date",
          y = 'Average Water Temperature',
          title = 'Average Hourly Water Temperature In Washington During December 2018')
+#> `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ![](tools/README-plot_data-1.png)<!-- -->

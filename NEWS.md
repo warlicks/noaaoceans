@@ -19,7 +19,7 @@
 
 # 0.1.0
 * First release of the package.
-* Functions to find NOAA's CO-OPS stations and query the [CO-OPS API](https://tidesandcurrents.noaa.gov/api/).
+* Functions to find NOAA's CO-OPS stations and query the [CO-OPS API](https://api.tidesandcurrents.noaa.gov/api/prod/).
 
 
 
