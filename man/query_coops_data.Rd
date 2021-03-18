@@ -31,7 +31,7 @@ retrieval  period.  Dates can be specified in the following formats:
 \emph{MM/dd/yyyy HH:mm}.}
 
 \item{data_product}{specifies the data product to be returned.  See
-\href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
+\href{https://api.tidesandcurrents.noaa.gov/api/prod/}{CO-OPS API Documentation} for
 the available data products.}
 
 \item{units}{a character string specifying if the data should be returned
@@ -44,7 +44,7 @@ Daylight Time \code{'lst_ldt'}.  Local times refer to the local time of the
 specified station.  The default is \code{'gmt'}}
 
 \item{datum}{a character string indicating the datum that should be returned.
-See \href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation}
+See \href{https://api.tidesandcurrents.noaa.gov/api/prod/}{CO-OPS API Documentation}
 for the available datums.}
 
 \item{interval}{a character string that specifies the interval for which
@@ -53,7 +53,7 @@ does not need to be specified.  Other option include hourly \code{'h'} and
 \code{'hilo'}.  The retrieval  time period specified by \strong{start_date}
 and \strong{end_date} to create restrictions on the intervals that can be
 returned. See
-\href{https://tidesandcurrents.noaa.gov/api/}{CO-OPS API Documentation} for
+\href{https://api.tidesandcurrents.noaa.gov/api/prod/}{CO-OPS API Documentation} for
 details}
 
 \item{bin}{the bin number for the indicated currents station. If a bin is not
