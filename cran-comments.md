@@ -1,6 +1,10 @@
+## This Is A Resubmission
+In this version I have: 
+* Fixed invalid urls identified in several files. 
+
 
 # Test environments
-* local Ubuntu 20.4.1 LTS install, R 3.6.3
+* local Ubuntu 20.4.1 LTS install, R 4.0.5
 * MacOS 10.13 (on travis-ci), R 4.0.3, 3.6.3
 * Windows (on Win-builder), Devel, Release-patched, old release.
 
