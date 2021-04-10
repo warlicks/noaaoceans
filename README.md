@@ -3,11 +3,8 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/noaaoceans)](https://cran.r-project.org/package=noaaoceans)
 [![Download
-count](https://cranlogs.r-pkg.org/badges/grand-total/noaaoceans)](https://cran.r-project.org/package=noaaoceans)
-[![Travis build
-status](https://travis-ci.com/warlicks/noaaoceans.svg?branch=master)](https://travis-ci.com/warlicks/noaaoceans)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/warlicks/noaaoceans?branch=master&svg=true)](https://ci.appveyor.com/project/warlicks/noaaoceans)
+count](https://cranlogs.r-pkg.org/badges/grand-total/noaaoceans)](https://cran.r-project.org/package=noaaoceans)  
+[![R-CMD-check](https://github.com/warlicks/noaaoceans/workflows/R-CMD-check/badge.svg)](https://github.com/warlicks/noaaoceans/actions)  
 [![codecov](https://codecov.io/gh/warlicks/noaaoceans/branch/master/graph/badge.svg)](https://codecov.io/gh/warlicks/noaaoceans)
 
 # noaaoceans
@@ -53,14 +50,14 @@ wa_station <- station_df %>%
     filter(station_state == 'WA' & water_temp == '1')
 wa_station %>% dplyr::as_tibble(.) %>% head()
 #> # A tibble: 6 x 15
-#>   station_id station_names station_state station_lat station_long
-#>   <chr>      <chr>         <chr>         <chr>       <chr>       
-#> 1 9440422    Longview      WA            46.1061     -122.9542   
-#> 2 9440910    Toke Point    WA            46.7075     -123.9669   
-#> 3 9441102    Westport      WA            46.9043     -124.1051   
-#> 4 9442396    La Push, Qui… WA            47.913      -124.6369   
-#> 5 9443090    Neah Bay      WA            48.3703     -124.6019   
-#> 6 9444090    Port Angeles  WA            48.125      -123.44     
+#>   station_id station_names             station_state station_lat station_long
+#>   <chr>      <chr>                     <chr>         <chr>       <chr>       
+#> 1 9440422    Longview                  WA            46.1061     -122.9542   
+#> 2 9440910    Toke Point                WA            46.7075     -123.9669   
+#> 3 9441102    Westport                  WA            46.9043     -124.1051   
+#> 4 9442396    La Push, Quillayute River WA            47.913      -124.6369   
+#> 5 9443090    Neah Bay                  WA            48.3703     -124.6019   
+#> 6 9444090    Port Angeles              WA            48.125      -123.44     
 #> # … with 10 more variables: date_established <chr>, water_level <chr>,
 #> #   winds <chr>, air_temp <chr>, water_temp <chr>, air_pressure <chr>,
 #> #   conductivity <chr>, visibility <chr>, humidity <chr>, air_gap <chr>
@@ -113,7 +110,6 @@ water_temp %>%
     labs(x = "Date",
          y = 'Average Water Temperature',
          title = 'Average Hourly Water Temperature In Washington During December 2018')
-#> `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ![](tools/README-plot_data-1.png)<!-- -->
