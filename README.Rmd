@@ -14,9 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 [![CRAN status](https://www.r-pkg.org/badges/version/noaaoceans)](https://cran.r-project.org/package=noaaoceans)
-[![Download count](https://cranlogs.r-pkg.org/badges/grand-total/noaaoceans)](https://cran.r-project.org/package=noaaoceans)
-[![Travis build status](https://travis-ci.com/warlicks/noaaoceans.svg?branch=master)](https://travis-ci.com/warlicks/noaaoceans)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/warlicks/noaaoceans?branch=master&svg=true)](https://ci.appveyor.com/project/warlicks/noaaoceans)
+[![Download count](https://cranlogs.r-pkg.org/badges/grand-total/noaaoceans)](https://cran.r-project.org/package=noaaoceans)  
+[![R-CMD-check](https://github.com/warlicks/noaaoceans/workflows/R-CMD-check/badge.svg)](https://github.com/warlicks/noaaoceans/actions)  
 [![codecov](https://codecov.io/gh/warlicks/noaaoceans/branch/master/graph/badge.svg)](https://codecov.io/gh/warlicks/noaaoceans)
 
   
