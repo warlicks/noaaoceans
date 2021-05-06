@@ -1,10 +1,12 @@
 url: warlicks.github.io/noaaoceans
 
+development:
+  mode: auto
+
 template:
   params:
     bootswatch: cosmo
 authors:
   Sean Warlick:
-    www.seanwarlick.com
-development:
-  mode: auto
+    href: www.seanwarlick.com
+
