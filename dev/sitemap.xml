@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>warlicks.github.io/noaaoceans/index.html</loc>
+  </url>
+  <url>
+    <loc>warlicks.github.io/noaaoceans/reference/coops_station_inventory.html</loc>
+  </url>
+  <url>
+    <loc>warlicks.github.io/noaaoceans/reference/list_coops_stations.html</loc>
+  </url>
+  <url>
+    <loc>warlicks.github.io/noaaoceans/reference/noaaoceans.html</loc>
+  </url>
+  <url>
+    <loc>warlicks.github.io/noaaoceans/reference/query_coops_data.html</loc>
+  </url>
+  <url>
+    <loc>warlicks.github.io/noaaoceans/reference/query_derived_products.html</loc>
+  </url>
+  <url>
+    <loc>warlicks.github.io/noaaoceans/reference/query_metadata.html</loc>
+  </url>
+  <url>
+    <loc>warlicks.github.io/noaaoceans/articles/getting_started.html</loc>
+  </url>
+</urlset>
