@@ -1,9 +1,11 @@
-# 0.3.0
+# noaaoceans 0.3.0  
+
 ## New Features
 * Added function `query_metadata()` to gather information for stations via the [CO-OPS Metadata API](https://api.tidesandcurrents.noaa.gov/mdapi/prod/#intro)
 * Added function `query_derived_products()` to gather data from the [CO-OPS Derived Product API](https://tidesandcurrents.noaa.gov/dpapi/latest/#intro)
 
-# 0.2.0
+# noaaoceans 0.2.0  
+
 ## New Features 
 * Added function `coops_station_inventory()` to gather historical data availability for a CO-OPS station.
 
@@ -17,7 +19,7 @@
 
 * Fixed typos in vignette. 
 
-# 0.1.0
+# noaaoceans 0.1.0  
 * First release of the package.
 * Functions to find NOAA's CO-OPS stations and query the [CO-OPS API](https://api.tidesandcurrents.noaa.gov/api/prod/).
 
