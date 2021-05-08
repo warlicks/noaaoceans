@@ -103,11 +103,11 @@ list_coops_stations <- function() {
 #'
 #' @examples
 #' \donttest{
-#' port_code <- query_port_codes()
-#' north_chesapeak <- query_port('cn')
+#' port_code <- query_port_stations()
+#' north_chesapeak <- query_port_stations('cn')
 #' }
 
-query_port_codes <- function(port_code=NULL){
+query_port_stations <- function(port_code=NULL){
 
     url <- "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/portsstation.json?"
 
