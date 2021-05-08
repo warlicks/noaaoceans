@@ -83,3 +83,44 @@ list_coops_stations <- function() {
 
     return(status_station_df)
 }
+
+#' Query NOAA PORTS Stations
+#'
+#' NOAA's PORTS stations are a colleciton of integrated sensor stations that are
+#' concentrated in seaports. These stations are intended to commerial vessels
+#' with real time environmental conditions. A list of these stations and
+#' data about the station's location and sensors.
+#'
+#' This API is not a documented part of CO-OPS web services. It was discovered
+#' as a part of the documentation
+#' \href{https://api.tidesandcurrents.noaa.gov/mdapi/prod/#intro}{CO-OPS Metadata API}.
+#'
+#' @param port_code an optional two letter string signifying a collection of
+#'   port stations. If it is not provided all port code stations are returned.
+#'
+#' @return A data frame
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' port_code <- query_port_codes()
+#' north_chesapeak <- query_port('cn')
+#' }
+
+query_port_codes <- function(port_code=NULL){
+
+    url <- "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/portsstation.json?"
+
+    query_params <- list(ports = port_code)
+    prepared_url <- httr::modify_url(url, query = query_params)
+
+    api_response <- httr::GET(prepared_url)
+    httr::stop_for_status(api_response)
+
+    parsed <- httr::content(api_response, as = "text", encoding = "UTF-8")
+    df <- jsonlite::fromJSON(parsed,
+                             flatten = TRUE,
+                             simplifyDataFrame = TRUE)[["portsStationList"]]
+    #TODO: Rename columns to match other data sources.
+    return(df)
+}
