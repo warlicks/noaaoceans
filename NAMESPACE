@@ -2,6 +2,7 @@
 
 export(coops_station_inventory)
 export(list_coops_stations)
+export(list_port_codes)
 export(query_coops_data)
 export(query_derived_products)
 export(query_metadata)

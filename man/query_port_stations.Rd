@@ -14,8 +14,8 @@ port stations. If it is not provided all port code stations are returned.}
 A data frame
 }
 \description{
-NOAA's PORTS stations are a colleciton of integrated sensor stations that are
-concentrated in seaports. These stations are intended to commerial vessels
+NOAA's PORTS stations are a collection of integrated sensor stations that are
+concentrated in seaports. These stations are intended to assist commercial vessels
 with real time environmental conditions. A list of these stations and
 data about the station's location and sensors.
 }

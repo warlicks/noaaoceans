@@ -86,8 +86,8 @@ list_coops_stations <- function() {
 
 #' Query NOAA PORTS Stations
 #'
-#' NOAA's PORTS stations are a colleciton of integrated sensor stations that are
-#' concentrated in seaports. These stations are intended to commerial vessels
+#' NOAA's PORTS stations are a collection of integrated sensor stations that are
+#' concentrated in seaports. These stations are intended to assist commercial vessels
 #' with real time environmental conditions. A list of these stations and
 #' data about the station's location and sensors.
 #'
@@ -123,4 +123,26 @@ query_port_stations <- function(port_code=NULL){
                              simplifyDataFrame = TRUE)[["portsStationList"]]
     #TODO: Rename columns to match other data sources.
     return(df)
+}
+
+#' Retrieves Unique Port Codes and Port Name
+#'
+#' Provided as a convince function to users it returns all the unique
+#' combinations of port code and port name from \code{\link{query_port_stations()}}
+#'
+#' This function produces a data frame with two columns. One column is the two
+#' character code for a port. The second column contains the name of the port
+#' that indicated by the code.
+#'
+#'
+#'
+#' @seealso \code{\link{query_port_stations}} \code{vignette('stations', package='noaaoceans')}
+#'
+#' @return A data frame
+#' @export
+#'
+#' @examples
+list_port_codes <- function(){
+    port_code_df = query_port_stations()
+    return(unique(port_code_df[, c('PORTSCode', 'PORTSName')]))
 }
